@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Nexgen</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Vue Js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="nexgen">
+      <!-- Overall -->
+      <section class="overall">
+        <div class="container flex">
+          <!-- Left -->
+          <div class="left flex">
+            <i class="fas fa-clock mr-10 pr-2"></i>
+            <p>Open Hours: Mon - Sat - 9:00 - 18:00</p>
+          </div>
+          <!-- Right -->
+          <div class="right flex">
+            <div class="phone flex ml-35">
+              <i class="fas fa-phone-alt mr-10 pr-2"></i>
+              <p>+1 (305) 1234-5678</p>
+            </div>
+            <div class="email flex ml-35">
+              <i class="fas fa-envelope mr-10 pr-2"></i>
+              <p>hello@example.com</p>
+            </div>
+            <div class="social flex">
+              <ul class="flex">
+                <li v-for="e in socialList" class="ml-35 pr-2">
+                  <a href="#">
+                    <i :class="`fab ${e.icon}`"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Header -->
+      <header class="main-header">
+        <div class="container flex">
+          <!-- Brand -->
+          <div class="brand upp">
+            <span class="first">nex</span>
+            <span class="last">gen</span>
+          </div>
+          <!-- Nav -->
+          <nav class="navbar flex upp">
+            <ul class="flex">
+              <li v-for="element in navList" class="mr-35">
+                <a href="#">
+                  {{ element.item }}
+                </a>
+              </li>
+            </ul>
+            <ul class="flex">
+              <li class="mr-35">
+                <a href="#">
+                  <i class="far fa-user"></i>
+                </a>
+              </li>
+              <li>
+                <a class="btn" href="#">get in touch</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Sliders -->
+        <div class="sliders flex"
+        @mouseenter="stopLoop"
+        @mouseleave="startLoop"
+
+        @keyup.arrow-left="prevPhoto"
+        @keyup.arrow-right="nextPhoto"
+        tabindex="0"
+        >
+          <img :src="photos[indexPhoto]" alt="sliders">
+          <!-- Financial -->
+          <div class="financial">
+            <h1>Financial Risk</h1>
+            <p class="txt-a">The right outcomes depend on continuous rigor in governance, models, and processes across the finance function.</p>
+            <a class="btn upp" href="#">get in touch</a>
+            <a class="btn2 upp" href="#">read more</a>
+          </div>
+          <div class="navigation">
+            <span v-for="(photo, index) in photos"
+            :class="['bullet', index == indexPhoto ? 'active' : '']"
+            @click="setPhoto(index)"
+            >
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Introduction -->
+      <section class="introduction txt-a">
+        <div class="container-small">
+          <h4 class="upp">introduction video</h4>
+          <h2>
+            Advisory
+            <span class="mark">
+              <span>Performance</span>
+            </span>
+          </h2>
+          <p class="txt-a">Financial executives need to review their strategies, operating models and capabilities so that their areas can generate sound information for better decision making.</p>
+          <div class="video">
+            <img src="./img/video-1.jpg" alt="logo-video">
+            <i class="real fas fa-play"></i>
+            <i class="clone fas fa-play"></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- Result -->
+      <section class="result txt-a">
+        <div class="container">
+          <h4 class="upp">what are we doing</h4>
+          <h2>
+            <span class="mark">
+              <span>Results</span>
+            </span>
+            in Numbers
+          </h2>
+          <div class="numbers">
+            <div class="numbers-item">
+              <span>128</span>
+              <h3>Certifications</h3>
+            </div>
+            <div class="numbers-item">
+              <span>230</span>
+              <h3>Employees</h3>
+            </div>
+            <div class="numbers-item">
+              <span>517</span>
+              <h3>Customers</h3>
+            </div>
+            <div class="numbers-item">
+              <span>94</span>
+              <h3>Countries Served</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="services">
+        <div class="container flex">
+          <div class="business">
+            <h4 class="upp">our business areas</h4>
+            <h2>
+              Excellence in
+              <span class="mark">
+                <span>Services</span>
+              </span>
+            </h2>
+            <p>We are leaders in providing consultancy services with a set of cutting-edge technologies and a team of experienced and renowned professionals. These are some options that you can hire.</p>
+          </div>
+          <div class="business-btn">
+            <a class="upp btn2" href="#">see all</a>
+          </div>
+        </div>
+        <div class="container flex">
+          <div class="card flex">
+            <div class="card-item">
+              <i class="fas fa-sitemap"></i>
+              <h3>Audit & Assurance</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+            </div>
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="card flex">
+            <div class="card-item">
+              <i class="fas fa-briefcase"></i>
+              <h3>Financial Advisory</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+            </div>
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="card flex">
+            <div class="card-item">
+              <i class="fas fa-chart-bar"></i>
+              <h3>Analytics and M&A</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+            </div>
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="card flex">
+            <div class="card-item">
+              <i class="fas fa-plane"></i>
+              <h3>Middle Marketing</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+            </div>
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="card flex">
+            <div class="card-item">
+              <i class="fas fa-globe-europe"></i>
+              <h3>Legal Consulting</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+            </div>
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="card flex">
+            <div class="card-item">
+              <i class="fas fa-archive"></i>
+              <h3>Legal Consulting</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+            </div>
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Team -->
+      <section class="team">
+        <div class="container flex">
+          <div class="teams">
+            <div class="team-experts">
+              <h4 class="upp">We like what we do</h4>
+              <h2>
+                <span class="mark">
+                  <span>Team</span>
+                </span>
+                of Experts
+              </h2>
+              <p>Ethics and integrity are the bases on which our professionals build their careers.<br>
+                They are fundamentals that become daily attitudes.
+              </p>
+            </div>
+            <div class="team-profile">
+              <div class="general flex">
+                <div class="general-1">
+                  <img src="./img/team-1.jpg" alt="foto-team">
+                </div>
+                <div class="general-2">
+                  <h3>David Cooper</h3>
+                  <p>CTO & CO-FOUNDER</p>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-linkedin-in"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="general flex">
+                <div class="general-1">
+                  <img src="./img/team-3.jpg" alt="foto-team">
+                </div>
+                <div class="general-2">
+                  <h3>Oliver Jones</h3>
+                  <p>CHIEF PROCUREMENT</p>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-linkedin-in"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="general flex">
+                <div class="general-1">
+                  <img src="./img/team-2.jpg" alt="foto-team">
+                </div>
+                <div class="general-2">
+                  <h3>Emma Lopez</h3>
+                  <p>CHIEF MARKETING</p>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-linkedin-in"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="general flex">
+                <div class="general-1">
+                  <img src="./img/team-4.jpg" alt="foto-team">
+                </div>
+                <div class="general-2">
+                  <h3>T. Johnson</h3>
+                  <p>CEO & PRESIDENT</p>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-linkedin-in"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="team-quote">
+            <h3>President Speech</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut lacinia diam.</p>
+            <p>Vivamus efficitur et est quis posuere. Nulla sollicitudin vulputate dui, id pretium tortor congue eu. Integer aliquet justo eu quam volutpat ullamcorper.</p>
+            <p>Duis ut hendrerit mauris. Phasellus faucibus ut enim vel tincidunt. Nunc venenatis a dui et laoreet.</p>
+            <div class="flex">
+              <h5>T. Johnson</h4>
+                <i class="fas fa-quote-right"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <!-- Editorial -->
+      <section class="editorial">
+        <div class="container flex">
+          <div class="news">
+            <h4 class="upp">our editorial content</h4>
+            <h2>
+              Latest
+              <span class="mark">
+                <span>News</span>
+              </span>
+            </h2>
+            <p>Every week we publish content about what is best in the business world.</p>
+          </div>
+          <div class="business-btn">
+            <a class="upp btn" href="#">see all</a>
+          </div>
+        </div>
+        <div class="container flex">
+          <div class="feedback-card">
+            <div class="feedback-user flex">
+              <div class="feedback-nome flex">
+                <i class="far fa-user"></i>
+                <span>Andrea Miller</span>
+              </div>
+              <div class="feedback-days">
+                <i class="far fa-clock"></i>
+                <span>2 Days Ago</span>
+              </div>
+            </div>
+            <div class="feedback-photo">
+              <img src="./img/news-1.jpg" alt="container-photo">
+            </div>
+            <div class="feedback-text">
+              <h3>Increasing creativity is possible for everyone</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+          </div>
+          <div class="feedback-card">
+            <div class="feedback-user flex">
+              <div class="feedback-nome flex">
+                <i class="far fa-user"></i>
+                <span>John Smith</span>
+              </div>
+              <div class="feedback-days">
+                <i class="far fa-clock"></i>
+                <span>9 Days Ago</span>
+              </div>
+            </div>
+            <div class="feedback-photo">
+              <img src="./img/news-2.jpg" alt="container-photo">
+            </div>
+            <div class="feedback-text error">
+              <h3>Because market research is part of the business plan</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+          </div>
+          <div class="feedback-card">
+            <div class="feedback-user flex">
+              <div class="feedback-nome flex">
+                <i class="far fa-user"></i>
+                <span>Andrea Miller</span>
+              </div>
+              <div class="feedback-days">
+                <i class="far fa-clock"></i>
+                <span>16 Days Ago</span>
+              </div>
+            </div>
+            <div class="feedback-photo">
+              <img src="./img/news-3.jpg" alt="container-photo">
+            </div>
+            <div class="feedback-text">
+              <h3>Working from home is now a trend</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="newsletter">
+        <div class="container-small flex">
+          <div class="newsletter-left">
+            <h4 class="upp">newsletter</h4>
+            <h2>
+              <span class="mark">
+                <span>Know</span>
+              </span>
+              First
+            </h2>
+            <p>Follow closely and receive content about our company and the news of the current market.</p>
+          </div>
+          <div class="newsletter-right">
+            <div class="top">
+              <input type="text" placeholder="Name">
+            </div>
+            <div class="top">
+              <input type="email" placeholder="Email">
+            </div>
+            <div class="bottom">
+              <a class="upp btn" href="#">subscribe</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MESSAGE -->
+      <section class="message">
+        <div class="container flex">
+          <div class="touch">
+            <h4 class="upp">send a message</h4>
+            <h2>
+              Get in
+              <span class="mark">
+                <span>Touch</span>
+              </span>
+            </h2>
+            <p>We will respond to your message as soon as possible.</p>
+            <div class="form flex">
+              <div class="name">
+                <input type="text" placeholder="Name">
+              </div>
+              <div class="email">
+                <input type="email" placeholder="Email">
+              </div>
+              <div class="phone">
+                <input type="text" placeholder="Phone">
+              </div>
+              <div class="info">
+                <input type="text" placeholder="More Info">
+                <a href="#">
+                  <i class="fas fa-chevron-down"></i>
+                </a>
+              </div>
+              <div class="final">
+                <textarea name="name" rows="4" cols="80" placeholder="Message"></textarea>
+              </div>
+              <div class="form-btn">
+                <a class="upp btn"href="#">send</a>
+              </div>
+            </div>
+          </div>
+          <div class="example">
+            <h3>Example Inc.</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Praesent diam lacus, dapibus sed imperdiet consectetur.</p>
+            <div class="phone">
+              <i class="fas fa-phone-alt"></i>
+              <p>+1 (305) 1234-5678</p>
+            </div>
+            <div class="email">
+              <i class="fas fa-envelope"></i>
+              <p>hello@example.com</p>
+            </div>
+            <div class="map">
+              <i class="fas fa-map-marker-alt"></i>
+              <p>Main Avenue, 987</p>
+            </div>
+            <div class="business-btn">
+              <a class="upp btn2" href="#">view map</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <section class="main-footer">
+          <div class="container flex">
+            <div class="footer-brand">
+              <div class="brand upp">
+                <span class="first">nex</span>
+                <span class="last">gen</span>
+              </div>
+              <p>A Functional HTML Template <br>
+                for Corporate & Business.</p>
+              <div class="footer-data">
+                <ul>
+                  <li v-for="element in footerList">
+                    <a href="#">
+                      <i :class="`fas ${element.icon}`"></i>
+                      <span>
+                      {{ element.item }}
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="business-btn">
+                <a class="upp btn2" href="#">get in touch</a>
+              </div>
+            </div>
+            <div class="footer-first">
+              <h3>About</h3>
+              <ul>
+                <li v-for="element in footerListFirst">
+                  <a href="#">
+                    <i :class="`fas ${element.icon}`"></i>
+                    <span>
+                    {{ element.item }}
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-second">
+              <h3>Services</h3>
+              <ul>
+                <li v-for="element in footerListSecond">
+                  <a href="#">
+                    <i :class="`fas ${element.icon}`"></i>
+                    <span>
+                    {{ element.item }}
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-third">
+              <h3>Support</h3>
+              <ul>
+                <li v-for="element in footerListThird">
+                  <a href="#">
+                    <i :class="`fas ${element.icon}`"></i>
+                    <span>
+                    {{ element.item }}
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Copyright -->
+        <section class="copyright">
+          <div class="container flex">
+            <div class="copyright-start">
+              <p>Enjoy the low price. We are tracking any intention of piracy.</p>
+            </div>
+            <div class="copyright-final">
+              <p>
+                © 2020 NEXGEN is Proudly Powered by
+                <a href="#">
+                  Codings.
+                </a>
+              </p>
+            </div>
+          </div>
+        </section>
+      </footer>
+    </div>
+
+    <!-- Js -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>
